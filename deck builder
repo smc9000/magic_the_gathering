@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class DeckBuilder {
+
+    public static void main(String[] args) {
+        ArrayList<String> deckList = new ArrayList<String>();
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+
+        while (running) {
+            System.out.println("Enter a command:");
+            System.out.println("1. Add card to deck");
+            System.out.println("2. Remove card from deck");
+            System.out.println("3. Show deck");
+            System.out.println("4. Quit");
+
+            int command = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (command) {
+                case 1:
+                    System.out.println("Enter card name:");
+                    String cardName = scanner.nextLine();
+                    deckList.add(cardName);
+                    System.out.println("Added " + cardName + " to deck.");
+                    break;
+                case 2:
+                    System.out.println("Enter card name:");
+                    String removeCardName = scanner.nextLine();
+                    if (deckList.contains(removeCardName)) {
+                        deckList.remove(removeCardName);
+                        System.out.println("Removed " + removeCardName + " from deck.");
+                    } else {
+                        System.out.println("Card not found in deck.");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Deck List:");
+                    for (String card : deckList) {
+                        System.out.println(card);
+                    }
+                    break;
+                case 4:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid command.");
+                    break;
+            }
+        }
+
+        scanner.close();
+    }
+
+}
